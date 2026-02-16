@@ -514,6 +514,7 @@ public struct AgentParams: Codable, Sendable {
     public let lane: String?
     public let extrasystemprompt: String?
     public let inputprovenance: [String: AnyCodable]?
+    public let voicewaketrigger: String?
     public let idempotencykey: String
     public let label: String?
     public let spawnedby: String?
@@ -540,6 +541,7 @@ public struct AgentParams: Codable, Sendable {
         lane: String?,
         extrasystemprompt: String?,
         inputprovenance: [String: AnyCodable]?,
+        voicewaketrigger: String?,
         idempotencykey: String,
         label: String?,
         spawnedby: String?
@@ -565,6 +567,7 @@ public struct AgentParams: Codable, Sendable {
         self.lane = lane
         self.extrasystemprompt = extrasystemprompt
         self.inputprovenance = inputprovenance
+        self.voicewaketrigger = voicewaketrigger
         self.idempotencykey = idempotencykey
         self.label = label
         self.spawnedby = spawnedby
@@ -591,6 +594,7 @@ public struct AgentParams: Codable, Sendable {
         case lane
         case extrasystemprompt = "extraSystemPrompt"
         case inputprovenance = "inputProvenance"
+        case voicewaketrigger = "voiceWakeTrigger"
         case idempotencykey = "idempotencyKey"
         case label
         case spawnedby = "spawnedBy"
