@@ -1,3 +1,4 @@
+import type { GatewayRequestHandlers, GatewayRequestOptions } from "./server-methods/types.js";
 import { ErrorCodes, errorShape } from "./protocol/index.js";
 import { agentHandlers } from "./server-methods/agent.js";
 import { agentsHandlers } from "./server-methods/agents.js";
@@ -19,9 +20,9 @@ import { skillsHandlers } from "./server-methods/skills.js";
 import { systemHandlers } from "./server-methods/system.js";
 import { talkHandlers } from "./server-methods/talk.js";
 import { ttsHandlers } from "./server-methods/tts.js";
-import type { GatewayRequestHandlers, GatewayRequestOptions } from "./server-methods/types.js";
 import { updateHandlers } from "./server-methods/update.js";
 import { usageHandlers } from "./server-methods/usage.js";
+import { voicewakeRoutingHandlers } from "./server-methods/voicewake-routing.js";
 import { voicewakeHandlers } from "./server-methods/voicewake.js";
 import { webHandlers } from "./server-methods/web.js";
 import { wizardHandlers } from "./server-methods/wizard.js";
@@ -66,6 +67,7 @@ const READ_METHODS = new Set([
   "agent.identity.get",
   "skills.status",
   "voicewake.get",
+  "voicewake.routing.get",
   "sessions.list",
   "sessions.preview",
   "cron.list",
@@ -90,6 +92,7 @@ const WRITE_METHODS = new Set([
   "tts.convert",
   "tts.setProvider",
   "voicewake.set",
+  "voicewake.routing.set",
   "node.invoke",
   "chat.send",
   "chat.abort",
@@ -172,6 +175,7 @@ export const coreGatewayHandlers: GatewayRequestHandlers = {
   ...connectHandlers,
   ...logsHandlers,
   ...voicewakeHandlers,
+  ...voicewakeRoutingHandlers,
   ...healthHandlers,
   ...channelsHandlers,
   ...chatHandlers,
